@@ -1,0 +1,89 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'hlsm:hlsm_inst|cnt[1]'
+Slack : -3.817
+TNS   : -21.674
+
+Type  : Slow 1200mV 85C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.024
+TNS   : -48.593
+
+Type  : Slow 1200mV 85C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.042
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'hlsm:hlsm_inst|cnt[1]'
+Slack : 0.451
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'hlsm:hlsm_inst|cnt[1]'
+Slack : -1.403
+TNS   : -8.418
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.682
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_50'
+Slack : 9.871
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'hlsm:hlsm_inst|cnt[1]'
+Slack : -3.802
+TNS   : -21.582
+
+Type  : Slow 1200mV 0C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.569
+TNS   : -36.714
+
+Type  : Slow 1200mV 0C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.242
+TNS   : -0.242
+
+Type  : Slow 1200mV 0C Model Hold 'hlsm:hlsm_inst|cnt[1]'
+Slack : 0.617
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'hlsm:hlsm_inst|cnt[1]'
+Slack : -1.403
+TNS   : -8.418
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.692
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : 9.893
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'hlsm:hlsm_inst|cnt[1]'
+Slack : -1.384
+TNS   : -7.960
+
+Type  : Fast 1200mV 0C Model Setup 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.514
+TNS   : -10.362
+
+Type  : Fast 1200mV 0C Model Hold 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -0.064
+TNS   : -0.064
+
+Type  : Fast 1200mV 0C Model Hold 'hlsm:hlsm_inst|cnt[1]'
+Slack : 0.377
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'hlsm:hlsm_inst|cnt[1]'
+Slack : -1.000
+TNS   : -6.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pll_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.715
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_50'
+Slack : 9.666
+TNS   : 0.000
+
+------------------------------------------------------------

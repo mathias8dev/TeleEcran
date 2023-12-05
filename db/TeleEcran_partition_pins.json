@@ -1,0 +1,101 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "mx_clock",
+					"strict" : false
+				},
+				{
+					"name" : "mx_CBA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mx_CBA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mx_CBA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mx_R1",
+					"strict" : false
+				},
+				{
+					"name" : "mx_R2",
+					"strict" : false
+				},
+				{
+					"name" : "mx_V1",
+					"strict" : false
+				},
+				{
+					"name" : "mx_v2",
+					"strict" : false
+				},
+				{
+					"name" : "mx_B1",
+					"strict" : false
+				},
+				{
+					"name" : "mx_B2",
+					"strict" : false
+				},
+				{
+					"name" : "mx_LE",
+					"strict" : false
+				},
+				{
+					"name" : "mx_OE",
+					"strict" : false
+				},
+				{
+					"name" : "global_ar",
+					"strict" : false
+				},
+				{
+					"name" : "redre_clk",
+					"strict" : false
+				},
+				{
+					"name" : "redre_dt",
+					"strict" : false
+				},
+				{
+					"name" : "xre_clk",
+					"strict" : false
+				},
+				{
+					"name" : "xre_dt",
+					"strict" : false
+				},
+				{
+					"name" : "yre_clk",
+					"strict" : false
+				},
+				{
+					"name" : "yre_dt",
+					"strict" : false
+				},
+				{
+					"name" : "greenre_clk",
+					"strict" : false
+				},
+				{
+					"name" : "greenre_dt",
+					"strict" : false
+				},
+				{
+					"name" : "bluere_clk",
+					"strict" : false
+				},
+				{
+					"name" : "bluere_dt",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

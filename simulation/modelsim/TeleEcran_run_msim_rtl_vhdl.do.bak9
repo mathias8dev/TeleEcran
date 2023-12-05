@@ -1,0 +1,20 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/pret/Documents/Code/Electronics/TeleEcran/db {C:/Users/pret/Documents/Code/Electronics/TeleEcran/db/pll_altpll.v}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/hlsm.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/TeleEcran.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/pwm.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/MemController.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/GammaCorrection.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/AddSelector.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/pll.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/RedRAM.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/GreenRAM.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/BlueRAM.vhd}
+vcom -93 -work work {C:/Users/pret/Documents/Code/Electronics/TeleEcran/quadraturedecoder.vhd}
+

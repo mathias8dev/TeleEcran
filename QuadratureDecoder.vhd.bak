@@ -1,0 +1,157 @@
+
+--------------------------------------------------------------------------------
+--
+--   FileNAme:         QuadratureDecoder.vhd
+--   Dependencies:     None
+--   Design SoftwAre:  QuArtus II 64-Bit Version 20.1.1 Build 720 11/11/2020 Lite Edition
+--
+--   HDL CODE IS PROVIDED "AS IS."  DIGI-KEY EXPRESSLY DISCLAIMS ANY
+--   WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT
+--   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+--   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL DIGI-KEY
+--   BE LIABLE FOR ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL
+--   DAMAGES, LOST PROFITS OR LOST DATA, HARM TO YOUR EQUIPMENT, COST OF
+--   PROCUREMENT OF SUBSTITUTE GOODS, TECHNOLOGY OR SERVICES, ANY CLAIMS
+--   BY THIRD PARTIES (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF),
+--   ANY CLAIMS FOR INDEMNITY OR CONTRIBUTION, OR OTHER SIMILAR COSTS.
+--
+--   Version History
+--   Version 1.0 9/7/2017 Scott LArson
+--     InitiAl PuBlic ReleAse
+--	  Version 1.2 April 8 2023 MZ
+--------------------------------------------------------------------------------
+
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY QuadratureDecoder IS
+    GENERIC (
+        POSITIONS : INTEGER := 16; --size of the position counter (i.e. numBer of POSITIONS counted)
+        OVERFLOW : BOOLEAN := true;
+        DEBOUNCE_TIME : INTEGER := 50_000; --numBer of clock cycles required to register A new position = DEBOUNCE_TIME + 2
+        SET_ORIGIN_DEBOUNCE_TIME : INTEGER := 500_000); --numBer of clock cycles required to register A new SET_ORIGIN_N vAlue = set_origin_DEBOUNCE_TIME + 2
+    PORT (
+        CLK : IN STD_LOGIC; --system clock
+        A : IN STD_LOGIC; --quAdrAture encoded signAl A
+        B : IN STD_LOGIC; --quAdrAture encoded signAl B
+        SET_ORIGIN_N : IN STD_LOGIC; --Active-low synchronous cleAr of position counter
+        DIRECTION : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); --direction of lAst chAnge, 1 = positive, 0 = negAtive
+        POSITION : OUT INTEGER RANGE 0 TO POSITIONS - 1 := 0; --current position relAtive to index or initiAl vAlue
+        UPDATE : OUT STD_LOGIC);
+END QuadratureDecoder;
+
+ARCHITECTURE arch OF QuadratureDecoder IS
+    SIGNAL a_new : STD_LOGIC;
+    SIGNAL b_new : STD_LOGIC;
+    SIGNAL a_prev : STD_LOGIC; --lAst previous stABle vAlue of encoded signAl A
+    SIGNAL b_prev : STD_LOGIC; --lAst previous stABle vAlue of encoded signAl B
+
+    SIGNAL set_origin_n_int : STD_LOGIC;
+    SIGNAL enable_set_origin_n_int : STD_LOGIC; --last deBounced vAlue of SET_ORIGIN_N signAl
+
+    SIGNAL ab_enable : STD_LOGIC;
+    SIGNAL direction_position_enable : STD_LOGIC;
+
+    SIGNAL position_next,
+    position_present : INTEGER RANGE 0 TO POSITIONS - 1 := 0;
+
+    COMPONENT GenericDebouncer IS
+        GENERIC (
+            DEBOUNCE_TIME : INTEGER := 50_000
+        );
+        PORT (
+            CLK : IN STD_LOGIC;
+            SIG : IN STD_LOGIC;
+            SIG_PREV : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+    COMPONENT QuadratureDebouncer IS
+        GENERIC (
+            DEBOUNCE_TIME : INTEGER := 50_000
+        );
+        PORT (
+            CLK : IN STD_LOGIC;
+            SIG1, SIG2 : IN STD_LOGIC;
+            SIG1_PREV, SIG2_PREV : OUT STD_LOGIC;
+            SIG1_NEW, SIG2_NEW : OUT STD_LOGIC;
+            enable : OUT STD_LOGIC
+        );
+    END COMPONENT;
+
+BEGIN
+
+    position <= position_present;
+    direction_position_enable <= ab_enable AND ((b_new XOR b_prev) OR (a_new XOR a_prev));
+    UPDATE <= direction_position_enable;
+    -- Determine direction
+    direction_process : PROCESS (CLK)
+    BEGIN
+        IF (CLK'EVENT AND CLK = '1') THEN
+            IF (direction_position_enable = '1') THEN
+                IF (b_prev XOR a_new) = '1' THEN
+                    direction <= "01";
+                ELSE
+                    direction <= "10";
+                END IF;
+            ELSE
+                direction <= "00";
+            END IF;
+        END IF;
+    END PROCESS;
+
+    --Determine position
+    position_present_process : PROCESS (CLK)
+    BEGIN
+        IF (CLK'EVENT AND CLK = '1') THEN
+            IF (set_origin_n_int = '0') THEN
+                position_present <= 0;
+            ELSE
+                --update the direction
+                IF (direction_position_enable = '1') THEN
+                    position_present <= position_next;
+                END IF;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    position_next_process : PROCESS (b_prev, a_new)
+    BEGIN
+        IF ((b_prev XOR a_new) = '1') THEN --clockwise direction
+            IF (position_present < POSITIONS - 1) THEN --not At position limit
+                position_next <= position_present + 1; --AdvAnce position counter
+            ELSIF OVERFLOW = true THEN --At position limit
+                position_next <= 0; --roll over position counter to zero
+            END IF;
+        ELSE --counter-clockwise direction
+            IF (position_present > 0) THEN --not At position limit
+                position_next <= position_present - 1; --decrement position counter
+            ELSIF OVERFLOW = true THEN--At position limit
+                position_next <= POSITIONS - 1; --roll over position counter mAximum
+            END IF;
+        END IF;
+    END PROCESS;
+
+    debounce_ab : QuadratureDebouncer GENERIC MAP(
+        DEBOUNCE_TIME => DEBOUNCE_TIME
+    )
+    PORT MAP(
+        CLK => CLK,
+        SIG1 => A,
+        SIG2 => B,
+        SIG1_PREV => a_prev,
+        SIG2_PREV => b_prev,
+        SIG1_NEW => a_new,
+        SIG2_NEW => b_new,
+        enable => ab_enable
+    );
+
+    debounce_set_origin : GenericDebouncer GENERIC MAP(
+        DEBOUNCE_TIME => SET_ORIGIN_DEBOUNCE_TIME
+    )
+    PORT MAP(
+        CLK => CLK,
+        SIG => SET_ORIGIN_N,
+        SIG_PREV => set_origin_n_int);
+
+END ARCHITECTURE;

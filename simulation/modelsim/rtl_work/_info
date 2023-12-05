@@ -1,0 +1,193 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim
+Ehlsm
+Z1 w1682407736
+Z2 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+R0
+Z6 8C:/Users/pret/Documents/Code/Electronics/TeleEcran/hlsm.vhd
+Z7 FC:/Users/pret/Documents/Code/Electronics/TeleEcran/hlsm.vhd
+l0
+L6 1
+VIn9ld2B4EE^D;oE`jFHFn1
+!s100 bVG?FlhX=kjWEnH?=zz2E2
+Z8 OV;C;2020.1;71
+31
+Z9 !s110 1687155536
+!i10b 1
+Z10 !s108 1687155536.000000
+Z11 !s90 -reportprogress|300|-93|-work|work|C:/Users/pret/Documents/Code/Electronics/TeleEcran/hlsm.vhd|
+Z12 !s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/hlsm.vhd|
+!i113 1
+Z13 o-93 -work work
+Z14 tExplicit 1 CvgOpt 0
+Aarch
+R2
+R3
+R4
+R5
+DEx4 work 4 hlsm 0 22 In9ld2B4EE^D;oE`jFHFn1
+!i122 2
+l36
+L26 277
+V5363VJRk;CkGM@MizLd273
+!s100 ac0ZP<:I<Do[IHB>c1=`G1
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+vpll_altpll
+R9
+!i10b 1
+!s100 6[<hZ[>e=g>aI^539M=L91
+!s11b Dg1SIo80bB@j0V0VzS_@n1
+IkTlX;[9=_5IMo_oYT`fWS2
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1685507063
+8C:/Users/pret/Documents/Code/Electronics/TeleEcran/db/pll_altpll.v
+FC:/Users/pret/Documents/Code/Electronics/TeleEcran/db/pll_altpll.v
+!i122 0
+L0 31 79
+OV;L;2020.1;71
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/db/pll_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/pret/Documents/Code/Electronics/TeleEcran/db|C:/Users/pret/Documents/Code/Electronics/TeleEcran/db/pll_altpll.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+C:/Users/pret/Documents/Code/Electronics/TeleEcran/db
+tCvgOpt 0
+Equadraturedecoder
+Z15 w1685417594
+R4
+R5
+!i122 1
+R0
+Z16 8C:/Users/pret/Documents/Code/Electronics/TeleEcran/QuadratureDecoder.vhd
+Z17 FC:/Users/pret/Documents/Code/Electronics/TeleEcran/QuadratureDecoder.vhd
+l0
+L26 1
+VNVRfJTYd`P4Em3:lREhn70
+!s100 fX=^H]j7?Rk4BCIBYM[5N3
+R8
+31
+R9
+!i10b 1
+R10
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/pret/Documents/Code/Electronics/TeleEcran/QuadratureDecoder.vhd|
+Z19 !s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/QuadratureDecoder.vhd|
+!i113 1
+R13
+R14
+Alogic
+R4
+R5
+DEx4 work 17 quadraturedecoder 0 22 NVRfJTYd`P4Em3:lREhn70
+!i122 1
+l50
+L41 62
+VX4EceH1P9_TleN0laojM31
+!s100 Ea]B>IH2>MC11GNWB_DLY2
+R8
+31
+R9
+!i10b 1
+R10
+R18
+R19
+!i113 1
+R13
+R14
+Eteleecran
+w1685506140
+R2
+R3
+R4
+R5
+!i122 3
+R0
+8C:/Users/pret/Documents/Code/Electronics/TeleEcran/TeleEcran.vhd
+FC:/Users/pret/Documents/Code/Electronics/TeleEcran/TeleEcran.vhd
+l0
+L6 1
+V2j`TAP?hSN=[<lYJf>Dh?0
+!s100 2E4E1@XC>6cjg4YB1MKh?0
+R8
+31
+R9
+!i10b 1
+R10
+!s90 -reportprogress|300|-93|-work|work|C:/Users/pret/Documents/Code/Electronics/TeleEcran/TeleEcran.vhd|
+!s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/TeleEcran.vhd|
+!i113 1
+R13
+R14
+Eteleecran_tb
+Z20 w1684992827
+Z21 DPx9 altera_mf 20 altera_mf_components 0 22 HVLmIbRl@QhXfWVOmhK<j1
+R2
+R3
+R4
+R5
+!i122 4
+R0
+Z22 8C:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim/TeleEcran_tb.vhd
+Z23 FC:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim/TeleEcran_tb.vhd
+l0
+L9 1
+VVQb@SZzEG0URQO5kHKcVG0
+!s100 VNJmVo6QWWa5dc<URo=a30
+R8
+32
+Z24 !s110 1687155545
+!i10b 1
+Z25 !s108 1687155545.000000
+Z26 !s90 -reportprogress|300|-work|work|C:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim/TeleEcran_tb.vhd|
+!s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim/TeleEcran_tb.vhd|
+!i113 1
+Z27 o-work work
+R14
+Aarch
+R21
+R2
+R3
+R4
+R5
+DEx4 work 12 teleecran_tb 0 22 VQb@SZzEG0URQO5kHKcVG0
+!i122 4
+l89
+L12 250
+VF6fRiE<HIo17^Ra3PEgRA1
+!s100 oXo?LD=m]:^J`7ZdXoK?`1
+R8
+32
+R24
+!i10b 1
+R25
+R26
+Z28 !s107 C:/Users/pret/Documents/Code/Electronics/TeleEcran/simulation/modelsim/TeleEcran_tb.vhd|
+!i113 1
+R27
+R14
